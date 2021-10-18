@@ -1,0 +1,64 @@
+ANY OPTIMISATIONS DONE ON DEOCKER
+   Don't install unnecessary packages. ...
+   Sort multi-line arguments. ...
+   Decouple applications. ...
+   Minimize the number of layers. ...
+   Leverage build cache.
+   
+HOW TO REDUCE THE DOCKER IMAGE SIZE
+To reduce the size we need to give minamal commands first and if there is 2 or more  referances 
+like RUN,ENV,ARG,CMD,ADD,COPY,ENTRYPOINT keep then as one command by using &&
+
+ARG: ARG instruction is used to define a variable can be used to build a docker image, ARg values are not 
+available after the image is build, in the running containers we can not access the arg variable
+docker build --build-arg <argument> -t <tag name> . 
+ENV: It is use to give values to the containers, we can not change the env variables in the command line arguments, 
+if we want to change ENV variables in the CMD line then we have to use ARG variables place Arg variables in the place of ENV variables  
+
+HOW DO WE TAKE BACKUP OF THE SERVER?
+
+DOCKER NETWORKING?
+    In Docker Networking after creating the docker server by installing docker software there will be a default docker0 port 
+    it will manage the ip address of the containers, if we want we can create custom network the command is docker network create 
+    we can create then after all the ips of the containers you create is from custom network range 
+    there are 2 types of networking
+    1. Bridge networks==> It is used with in the single host
+    2. overlay networks==> It is used to conmmunicate between multi hosts
+    3. macvlan networks==> It is used to connect docker containers directly to the host network interfaces
+	
+DOCKER COMPOSE
+To run a multi container application in a diclarative formate Docker compose tool is used, it is defined in yaml script.	
+	
+DOCKER COMMANDS:
+. docker ps
+. docker ps -a
+. docker run -it --name container name image name: version /bin/bash
+. docker images
+. docker pull image name: version
+. docker start container name
+. docker info
+. ctrl+p+q = exit without stopping container
+. exit = exit with stopping container
+. docker exec -it container name /bin/bash = entering into the container
+. docker inspect container name = details of the container
+. docker commit container name (finel image name): version = to creat finel image
+. docker build -t "dockerbuild:v1" .
+. docker rm -f container name
+. mkfs.ext4 /dev/xvdf = to reset the new disk before use
+. mount -t ext4 /dev/xvdf /folder name/ = to mount disk to a folder
+. docker run -it --name vol1 -v /myapp1:/dvs7 centos:7 /bin/bash = to create container with volume mounting to it
+. docker top container name = to know the information of a perticular container
+. docker stats = to check all container performance
+. docker logs -f container name
+. docker ps -q = to get all container ids
+. docker rmi -f image name = delete image
+. docker rmi -f $(docker images|grep -v -e "REPOSITORY\|centos"|awk '{print $3}')
+. docker save -o imagebundle.tar d0d4e7470bd2 = to build image as tar file
+. docker load -i my image name.tar.gz = to untar the image
+. docker tag image name =  to give duplicate name
+. docker push image name = to push image to the docker hub repo
+. docker pull image name
+. docker login = to login to docker hub
+. gzip image name.tar = add zip to a tar file
+
+	

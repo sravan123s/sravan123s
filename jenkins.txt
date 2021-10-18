@@ -1,0 +1,83 @@
+CREATING A MASTER AND SLAVE CONFIGURATION IN JENKINS?
+
+A Jenkins master comes with the basic installation of Jenkins, and in this configuration, 
+the master handles all the tasks for your build system.
+If you are working on multiple projects you may run multiple jobs on each and every project. 
+Some projects need to run on some particular nodes, and in this process, we need to configure 
+slaves. Jenkins slaves connect to the Jenkins master using the Java Network Launch Protocol.
+The Jenkins master acts to schedule the jobs and assign slaves and send builds to slaves to 
+execute the jobs.
+It will also monitor the slave state (offline or online) and getting back the build result 
+responses from slaves and the display build results on the console output. The workload of 
+building jobs is delegated to multiple Slaves.
+FOR PRACTICAL KNOWLWEDGE: https://dzone.com/articles/jenkins-03-configure-master-and-slave
+
+HOW TO MANAGE PLUGINS IN JENKINS ?
+
+Jenkins is such handy tool which can be easily extended via adding additional plugins in order 
+to get more functionalities. E.g. including Git as SCM option etc. 
+This can be easily done by selecting the option Manage Jenkins - Manage Plugins
+FOR PRACTICAL KNOWLWEDGE: https://www.studytonight.com/jenkins/plugin-management
+
+HOW JENKINS CAN BE MOVED OR COPIED FROM ONE SERVER TO ANOTHER?
+Copy all the files in your JENKINS_HOME directory over to the new server.
+Point JENKINS_HOME on the new server at the new directory.
+Copy the Jenkins war file over to the new machine and start it up.
+All Jenkins settings, jobs, plugins, config, etc. live in JENKINS_HOME.
+https://www.edureka.co/community/38177/how-do-i-move-jenkins-from-one-server-to-another
+
+EXPLAIN HOW TO CREATE A BACKUP AND COPY FILES IN JENKINS?
+You would require to copy and take backup of “JENKINS_HOME” directory in regular intervals.
+You can create a cron job to do so.
+Or you can use “Thin Backup” plugin in Jenkins.
+All the configurations are stored as files in the Jenkins Home directory 
+
+EXPLAIN HOW YOU CAN SET UP JENKINS JOB?
+https://www.tutorialspoint.com/jenkins/jenkins_setup_build_jobs.htm
+
+HOW WILL YOU SECURE JENKINS?
+1.Select Manage Jenkins, then Configure Global Security.
+2.Click Enable Security. 
+3.Select Jenkins' own user database.
+4. Allow users to sign up.
+5.Continue with Authorization, .
+
+WHY DO YOU NEED A CONTINUOUS INTEGRATION OF DEVELOPMENT & TESTING?
+
+WHAT IS MEANT BY CONTINUOUS INTEGRATION?
+1.Developers check out code into their private workspaces.
+2.When they are done with it they commit the changes to the shared repository (Version Control Repository).
+3.The CI server monitors the repository and checks out changes when they occur.
+4.The CI server then pulls these changes and builds the system and also runs unit and integration tests.
+5.The CI server will now inform the team of the successful build.
+6.If the build or tests fails, the CI server will alert the team.
+7.The team will try to fix the issue at the earliest opportunity.
+8.This process keeps on repeating.
+
+HOW YOU ARE MANAGING THE HIGH AVAILABILITY IN JENKINS OR HAVE U CONFIGURED THE REPLICATION FOR JENKINS?
+   no replication there will be only one master, we have our /var/lib/jenkins  under my LB i have my master 
+   and standby master, 
+   when customer hits my jenkins.com to my LB
+
+HOW YOU ARE MANAGING JENKINS BUILDS
+ shared library- we have a shared library once we write a code in shared library it get shared 
+
+HOW TO CHANGE JENKINS PORT NO 8080 TO 80?
+in jenkins we have a file called etc/sysconfig/jenkins in that file we have to change the port 8080 to 80
+
+JENKINS FILES
+Jenkins file is a text file which is used to store the jenkins pipeline defination and it is checked into the 
+source control, all the stages and steps are involved in the declatative pipeline to instruct 
+jenkins to which stage it should be exicuted
+
+TYPES OF JENKINS PIPELINE
+DECLARATIVE: Declarative pipeline has stages for every individual stage there are multipul steps in it
+SCRIPTED: Scripted pipelinecode is a traditional way of working, In scripted there is no need of steps,
+
+ To deploy artifacts to envernments we have to install publish over ssh plugin firts
+
+SOME OF THE JENKINS PLUGINS
+Maven integration==> It will give maven project
+pipeneline utility steps==> used for the pipeline code
+docker pipeline
+role based authentication plugin==> to give roles to the users

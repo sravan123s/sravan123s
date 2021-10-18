@@ -1,0 +1,33 @@
+sudo su -
+yum
+LS
+ls -ls
+pwd
+cd
+mkdir
+touch
+groupadd
+useradd
+chown
+chmod
+rm -f file name
+rm -rf ==> delete full server dont use this command
+ps -ef==> it will give all the process running the system
+passwd==> to give password to the useradd
+fdisk /dev/xvdf==> to creat partician
+mkfs.ext4 dev/xvdf==> to formate disc
+blkid==> to check whether the disc is formated or not
+ifconfig -a===> to get private ip
+lsblk==> to show all discs
+df -hT==> to show all discs with type and size and mount points
+vgcreate==> to create vg
+lvcreate==> to create lv 
+vgextend==> to increase volume group
+lvextend==>to increase logical volume
+resize2fs==> to formate the newly added disk
+vgremove==> ro remove volume group
+lvremove==> to remove lv 
+$?==> is used to check the last executed command is success or not, when we execute echo $? if it returm 0 then the code is success other than 0 it is failure.
+$#==> it will give total no of arguments that is count
+$*==> it will give total number of arguments
+find /directory/path/ -mtime -N -ls==> to find last N days modified files

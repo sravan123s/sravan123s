@@ -1,0 +1,44 @@
+WHAT IS ANSIBLE?
+ Ansible is an open source IT configuration management and automation platform. It uses human-readable YAML templates 
+ so users can program repetitive tasks to happen automatically. 
+
+WHICH AMONG PUPPET, CHEF, SALTSTACK AND ANSIBLE IS THE BEST
+CONFIGURATION MANAGEMENT (CM) TOOL? WHY?
+
+WHAT ARE THE GOALS OF CONFIGURATION MANAGEMENT PROCESSES?
+ The purpose of Configuration Management is to identify, record, control, report, audit and verify service 
+ assets and configuration items, including baselines, versions, constituent components, their attributes, and relationships.
+ 
+WHAT IS PLAY BOOK,USES OF ANSIBLE PLAYBOOK?
+Playbook is a set of instructions which are used to do some tasks It is used to install packages and configure large number of servers with in 
+a short time, in ansible playbooks as well as conditions, variables and tasks can be saved, shared and reused
+
+WHAT IS AN ANSIBLE MODULE?
+ Some of the modules are Package management,copy,Debug,File,Lineinfile,git,Cli_command,Archive,Command, we use yaml syntax to pass modules in playbook
+
+WHAT IS IDEMPOTENCY?
+ an action which, when performed multiple times, has no further effect on its subject after the first time it is performed
+
+WHAT ARE ROLES IN ANSIBLE?
+ Roles are used to reduce the code complexity by writing code in multiple files and act in a single node. Roles let you automatically load related vars, 
+ files, tasks, handlers, and other things based on a known file structure. After you group your content in roles, you can easily reuse them 
+ and share them with other users.
+
+SAY ANY 10 MODULES IN ANSIBLE
+ command,script,Handlers,tasks,url,file,service,template,debug,regester,set-fact,copy
+ 
+    ANSIBLE             CHEF
+   agent less		agent based
+   default port 22	customised ports
+   python		    rubi
+   push based		pull and push based
+   playbooks		cookbooks
+   free			    licensed, above 8 servers need to pay 
+   
+DEBUG MODULE
+At any point of time if we want to get the data from the ansible playbook we will use debug module,
+the beauty of the debug module is to check what is happening in the code
+
+WHAT IS ANSIBLE GALAXY
+Ansible galaxy is a repository of ansible roles whiche are used in playbook to exicute in various hosts, those hostes are connected through ssh  protocol,
+which can be managed by controller servers(home, search, community)

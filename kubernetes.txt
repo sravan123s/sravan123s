@@ -1,0 +1,147 @@
+WHAT IS KUBERNETES
+kubernetes is a containerization and orcestration tool, simply it is defined as the cluster of docker
+
+WHAT IS CONTAINER
+Container is a light thread process which help you to perform some task inside in it.
+
+WHAT IS POD
+Pod is the resource which is used to create the container 
+
+WHAT IS JOB?
+Job is a higher level abstraction that uses pods to run a completable task
+
+WHAT IS DEPLOYMENT
+It is used to convey the details for creating the pod
+
+WHAT IS SERVICE 
+Service is act like a load balance, in deployment there are many pods those pods have different ip addresses so to expose those pods 
+to outside world we use service all the pods are mapped to the service when the customes hitting the service ipaddress it will redirect 
+all traffic to the pods
+
+WHAT IS NAME SPACE
+Name space ia like a template which is managing DEPLOYMENT configuration for each person working in kubernetes he will have a dedicated namespace
+
+WHAT IS CLUSTER IP, NODEPORT, LOADBALANCER
+CLUSTER IP==> It is used for the internal communication that is for service to service and pod to pod like that
+NODE PORT==> It is used for testing the application internally that is with the network, this port ranges from 30000, in this we can take any
+             worker node ip address fallowed by the node port we can see the application working on the web
+LOAD BALANCER==> It is used when we feel to expose our application to external vendor our network team will give a range of external ips throung that ips  
+                 any one can access the application			 
+
+IN KUBERNETES DEPLOYMENT STRATAGY
+   ROLLING UPDATE: in this if we make any changes to deployment configuration it will 
+   affect the pod one by one it means it will kill one pod and generate another one by one
+   RECREATE:in this if we make any changes to deployment configuration it will affect all 
+   pods at a time it means it will kill all pods at once and create all pods at a time 
+
+HOW DO YOU VERIFY WHETHER THE APPLICATION RUNNING OR NOT
+  we login to the server and we will verify the app status using "ps -ef|grep -i app name"
+  if iam not getting any data i will verify whether the application is running on a perticular 
+  port or not "netstat -nap|grep portno" ,if the applicaton not running on that port i will 
+  try to start the app "systemctl start app name" , still there is some issue i will verify 
+  logs using "tail -f /var/log/app.log" once i figured out the issue i will inform to application developer.
+   
+SEREVER IS NOT REACHABLE HOW DO YOU TROUBLEHOOT?
+  firts i will ping ip if the server is not reachable i will try to do a ssh ip address if it is not reachable i will loged into the 
+  console the first command i will give is "ifconfig -a" check ether0 if it is down give systemctl resart the network once we restart 
+  we will try to ssh now the server is up and running still iam not able to access the server now i will check SG whether my ip is 
+  allowed or not and i will verify when iam hitting my vpc that is my IGW i will verify my route table, NACL, subnet ,EC2 and SG
+  most of the cases if the server is not reachable reason is my SG still if it is not reachable under my NACL i might blocked my ip address   
+   
+IN KUBERNETES MY DEPLOYMENT NOT WORKING WHAT WILL WE DO?
+  kubectl get deploy==>kubectl get pods -l deploy selector name==> kubectl logs -f pod name it will give me info (or) kubectl  
+  describe pod pod name  
+
+LABELS: Labels are key/value pairs that are attached to objects, such as pods. Labels are  used to identify the pods where should go in which
+        deployment they should go like that 
+SELECTOR: Here is you can see selector tag, which is used by deployment to talk with its pods here Deployment finds which Pods 
+          to manage. In this case, you simply select a label that is defined in the Pod template
+NODE SELECTOR:A node selector specifies a map of key/value pairs that are defined using custom labels on nodes and selectors 
+              specified in pods. If the pode have to run in that node we will give the node value same that as the pode 
+REPLICASET: Replicasets are used to give high availability of application in the pods if one pod kills one more pod is in standby to serve the application traffic.   
+             
+REPLICATION CONTROLLER: A ReplicaSet purpose is to maintain a stable set of replica Pods running at any given time, it is also used for at the time of autoscalling 
+when the traffic is increasing to the application we need more pods to serve these type of requests we use replica controllers 			
+			
+
+HAVE YOU EVER DONE PATCHING , WHAT ARE THE STEPS TO DO PATCHING
+  svr backup, etcd backup, pick  workers and 1 master, drain the node, we do patching, set shedule disable to false(un cordon)	
+
+INGRESS
+ Ingresss will act like a load balancer in b/w two application servers in Ingress there is an API object that provides routing rules to manage 
+ external users' access to the services in a Kubernetes cluster. 
+
+HELM CHARTS
+ in kubernetes we are using  different different yaml files to install packages, helm charts are used to make that yaml files as a bundle and execute at a time  
+ there is a helm hub we can keep this yaml files in that helm hub and use them when ever we want
+
+MASTER COMPONENTS
+SCHEDULER==> It is used to create containers in worker nodes
+CONTROLLER==> It is used to manage the containers in the worker nodes and communicate to the scheduler
+ETCD==>It act like a Heart of kubernetes, is is  used to store the information of our requirement.
+API SERVER==> It act like a communicator to all the services in the kubernetes cluster
+WORKER CONPONENTS
+KUBELET==>It is used for communication between worker node and master node
+KUBE PROXY==> It is used for communication between the pods in the worker nodes
+CONTAINER RUNTIME==> to run containers in workers we need docker s/w as we called it as docker run time
+
+WHAT KIND OF ERROR MSGS YOU WILL OBSERVE?
+ configmap errors , iamge pull errors, pv bound issues, out of memory (OOM)
+ 
+WHAT ARE DEMONSETS?
+Demon is the process which is runnig continuosly in backend, in kubernetes we use this at the deployment to set the pods like one pod in one node we can say that as 
+ecah one catch one policy
+
+WHAT IS PV AND PVC?
+PV==> It is a cluster component which is bounded to the cluster
+PVC==> It is a bounded to namespace 
+Here the DEPLOYMENT configuration is connected to pvc, pvc connected to pv and pv is to the workernodes, when ever the pods in deployment configuration write
+some data to pvc the data will go to the pv which is connected to the worker nodes
+
+DIFF B/W RETAIN AND RECYCLE
+RETAIN==> If we have created PV and PVC type as retain then the data in the pv is safe when we  delete pvc 
+RECYCLE==> If we have created PV and PVC type as recycle then the data in the pv is deleted when we delete pvc
+
+SERVICE MESH 
+To give communication between micro services service mesh is used and we can take ISTIO as service mesh tool
+
+TAINTS AND TOLERATIONS 
+Tolerations are applied to pods, and allow (but do not require) the pods to schedule onto nodes with matching taints
+Taints and tolerations work together to ensure that pods are not scheduled onto inappropriate nodes. One or more taints 
+are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints.
+YOU ADD A TAINT TO A NODE USING KUBECTL TAINT COMMAND
+kubectl taint nodes node1 key1=value1:NoSchedule
+TO REMOVE THE TAINT ADDED BY THE COMMAND ABOVE, YOU CAN RUN:
+kubectl taint nodes node1 key1=value1:NoSchedule-
+
+CRONJOB?
+A Cron Job creates Jobs on a time-based schedule, A CronJob object is just like an entry in crontab in Linux. It runs a job periodically on a given schedule
+ ┌───────────── minute (0 - 59)
+#      |      │ ┌───────────── hour (0 - 23)
+#      |      │ │ ┌───────────── day of the month (1 - 31)
+#      |      │ │ │ ┌───────────── month (1 - 12)
+#      |      │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+#      |      │ │ │ │ │                                   7 is also Sunday on some systems)
+#      |      │ │ │ │ │
+#      |      │ │ │ │ │
+# CRON_TZ=UTC * * * * *
+
+KUBERNETES COMMANDS:
+ 
+. kubectl get nodes
+. kubectl get namespace (or) ns
+. kubectl get pods (or) po
+. kubectl get po -o wide = to get full detailes
+. kubectl get deploymentconfiguration (or) deploy
+. kubectl create -f filename.yaml
+. kubectl apply -f filename.yaml
+. kubectl replace -f filename.yaml 
+. kubectl delete -f filename.yaml
+. kubectl describe pod pod-name
+. kubectl describe service service-name
+. kubectl describe namespace namespace-name
+. kubectl describe <objecttype> <objectname>
+. kubectl scale deploy deploy name --replicas=3 ==> to scale up 
+. kubectl get nodes -l env=dev = to get labeled nodes
+. kubectl get pods --all-namespaces = gives entire pods running in the entire cluster
+. kubectl autoscale --min=3 --max=10 --cpu-percentage=80 deploy/dvs-deployment = for auto scalling of pods

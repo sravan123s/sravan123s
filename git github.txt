@@ -1,0 +1,83 @@
+BRANCHING STRATEGIES?
+
+FEATURE BRANCHING....
+A feature branch model keeps all of the changes for a particular feature inside of a branch. 
+When the feature is fully tested and validated by automated tests, the branch is then merged 
+into master.
+TASK BRANCHING...
+In this model each task is implemented on its own branch with the task key included in the 
+branch name. It is easy to see which code implements which task, just look for the task key 
+in the branch name.
+RELEASE BRANCHING...
+Once the develop branch has acquired enough features for a release, you can clone that branch 
+to form a Release branch.  so no new features can be added after this point, only bug fixes, 
+documentation generation, and other release-oriented tasks should go in this branch.
+Once it is ready to ship, the release gets merged into master and tagged with a version number. 
+
+IN GIT HOW DO YOU REVERT A COMMIT THAT HAS ALREADY BEEN PUSHED AND MADE PUBLIC?
+Remove or fix the bad file in a new commit and push it to the remote repository.
+This is the most natural way to fix an error. Once you have made necessary changes to the file, 
+commit it with new commit message”
+Create a new commit that undoes all changes that were made in the bad commit.to do this I will use a command
+git revert <name of bad commit>
+
+GIT RESET AND GIT REVERT
+ git reset HEAD allows you to go back to a previous commit and removes any other commits on its way back.It will not store the data
+ git revert creates a new commit with the previous commit that you are reverting back to. 
+ Instead of destroying everything back to that commit, you simply make a copy of that and move forward with that commit
+ 
+GIT STASH & GIT CONFIG
+The git stash command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy,
+which means if iam working in some feature if there is a change in requirement i will give priorihty for the new feature then the old one where iam working 
+will be saved in stash memory, i will use git pop for getting the data from stash storage for working 
+The git config command is a  function that is used to set Git configuration values on a global or local project level
+
+HOW DO YOU SQUASH LAST N COMMITS INTO A SINGLE COMMIT?
+There are two options to squash last N commits into a single commit. 
+
+If you want to write the new commit message from scratch use a command
+git reset –soft HEAD~N && git commit
+If you want to start editing the new commit message with a concatenation of the existing commit 
+messages then you need to extract those messages and pass them to Git commit for that I will use
+git reset –soft HEAD~N && git commit –edit -m”$(git log –format=%B –reverse .HEAD@{N})”
+
+WHAT IS GIT BISECT? HOW CAN YOU USE IT TO DETERMINE THE SOURCE OF A (REGRESSION) BUG?
+Git bisect is used to find the commit that introduced a bug by using binary search. 
+Command for Git bisect is git bisect <subcommand> <options> 
+This command uses a binary search algorithm to find which commit in your project’s history introduced a bug.
+
+GIT MERGE
+Mearging takes the contents of a source branch and combine them with a target branch, only traget branch is uploaded in this process 
+
+WHAT IS GIT REBASE? 
+git rebase is a command which will merge another branch into the branch where you are currently working, 
+and move all of the local commits that are ahead of the rebased branch to the top of the history on that branch.
+The command replay the changes made in the feature branch at the tip of master, 
+allowing conflicts to be resolved in the process
+
+HOW DO YOU FIND A LIST OF FILES THAT HAS CHANGED IN A PARTICULAR COMMIT?
+To get a list files that has changed in a particular commit use command
+git diff-tree -r {hash}
+Given the commit hash, this will list all the files that were changed or added in that commit. 
+The -r flag makes the command list individual files, rather than collapsing them into root directory names only.
+
+HOW DO YOU SETUP A SCRIPT TO RUN EVERY TIME A REPOSITORY RECEIVES NEW COMMITS THROUGH PUSH?
+PRE-RECEIVE hook in the destination repository is invoked when commits are pushed to it. 
+Any script bound to this hook will be executed before any references are updated. 
+This is a useful hook to run scripts that help enforce development policies.
+UPDATE hook works in a similar manner to pre-receive hook, and is also triggered before any updates are actually made. 
+However, the update hook is called once for every commit that has been pushed to the destination repository.
+POST-RECEIVE hook in the repository is invoked after the updates have been accepted into the destination repository. 
+This is an ideal place to configure simple deployment scripts, invoke some continuous integration systems, 
+dispatch notification emails to repository maintainers, etc.
+
+HOW WILL YOU KNOW IN GIT IF A BRANCH HAS ALREADY BEEN MERGED INTO MASTER?
+i will use two commands
+git branch –merged==> lists the branches that have been merged 
+git branch –no-merged==> lists the branches that have not been merged.
+
+CHERRY-PICK
+Cherry picking in Git means to choose a commit from one branch and apply it onto another.
+
+GIT COMMANDS
+git branch -d branch name

@@ -1,0 +1,27 @@
+Procedural vs Declarative
+Procedural approach means if you want to get something you need to mention the 
+things in an programmatic approach which means in order. "Ansible" works on the procedural.
+But in Declarative approach you no need to worry about flow it will automatically gets the 
+respective information based up the resource what we are choosing
+
+HOW ARE YOU MANNAGING THE TFSTATE FILE
+  there are two ways 1. GIT 2. S3 with dynamodb
+  
+WHAT IS MUTABLE AND IMUTABLE
+mutable is changable where as imutable is not changable
+
+CLINT/SEREVER VS CLINT ONLY ARTECTURE
+clint/serever means for example it has master slave configuration it totally depends on master if the master is down total infrastructure is down
+clint only artecture means we will install controller s/w in one serever and make it as controller if that serevr fails we will take another serevr 
+as controller by installing the s/w
+
+DEFINE MODULES IN TERRAFORM?
+Modules in terraform containing several resources which are combined to form a root module in terraform all the resources are 
+in .tf file
+
+TERRAFORM
+. Terraform init .
+. Terraform plan
+. Terraform apply
+. Terraform destroy
+. Terraform show==> to show all the details

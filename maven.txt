@@ -1,0 +1,31 @@
+WHAT IS BUILD LIFECYCLE?
+A Build Lifecycle is a sequence of phases, which define the order in which the goals are to be executed, there are 3 build lifecycles default,clean,site in each there are phases 
+Here phase represents a stage in life cycle. some of the phases are
+prepare-resources,validate,compile,Test,package,install,Deploy
+CLEAN:Remove all previous build files 
+VALIDATE: Validate the project is correct and all the necessary information is available
+COMPILE: Compile the source code of the project 
+TEST: run test using sutable unit test framework
+PACKAGE: Take the compile code and package it in distrubuted formate like, JAR
+VERIFY:run any checks to verify the package is valid and meet the quality creteria
+INSTALL:Install the package into the local repository, for use as dependency in other projects locally
+DEPLOY:copy the final package to remote repository for sharing to other projects
+
+LIST OUT WHAT ARE THE ASPECTS DOES MAVEN MANAGES?
+Maven manages the activites of the developer ie,
+Build, Documentation, Reporting, Dependencies, SCMs, Releases, Distribution, Mailing list
+
+MENTION THE THREE BUILD LIFECYCLE OF MAVEN?
+Clean: Cleans up artifacts that are created by prior builds
+Default (build): Used to create the application
+Site:to genetare site documentation For the project
+
+EXPLAIN WHAT IS POM?
+In Maven, POM (Project Object Model) is the fundamental unit of work. It is an XML file which holds the 
+information about the project and configuration details used to build a project by Maven.
+
+WHY MAVEN PLUGINS ARE USED?
+Maven plugins are used to Create a jar file, Create war file, Compile code files, Unit testing of code, Documenting projects, Reporting
+
+EXPLAIN HOW TO RUN TEST CLASSES IN MAVEN?
+To run test classes in Maven, you need surefire plugin, check and configure your settings in setting.xml and pom.xml for a property named “test.”

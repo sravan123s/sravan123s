@@ -1,0 +1,35 @@
+WHAT IS AUTOMATION TESTING? EXPLAIN SOME OF ITS BENEFITS.
+Automated software testing can increase the depth and scope of tests to help improve software quality. 
+Lengthy tests that are often avoided during manual testing can be run unattended. They can even be run 
+on multiple computers with different configurations. 
+
+HOW TO AUTOMATE TESTING IN THE DEVOPS LIFECYCLE?
+In order to implement automated testing into your DevOps lifecycle, you must first map out your release pipeline. 
+This can be done by following four steps: Identify all the stages of your release. Identify the gates and 
+requirements necessary in a build's journey to production.
+
+WHAT IS SONARQUBE QUALITY PROFILE?
+Quality Profiles are a core component of SonarQube, since they are where you define a set of rules that, 
+ should raise issues on your codebase  Quality Profiles are defined for each language, by default there will be some set of rules for each language,
+ If you want to create a new quality profile there will a option on the right hand top,there will be rules to add rules hit activate button
+ 
+WHAT ARE RULES?
+Rules are nothing but instructions of a best practices these are used to define quality profiles 
+ 
+WHAT IS SONARQUBE QUALITY GATES?
+Quality Gates are the best way to ensure standards are met across all the organization's projects.
+Quality Gates can be described as a collection of threshold measures set on your project like unit test pass rate
+in this we can give quality metrix such as code coverage, critical issues, bugs
+
+DESCRIBE THE ARCHITECTURE OF THE SONAR.
+The core engine of the platform, Squid, is supported by additional code analyzers that Sonar organizes together to measure quality.
+
+
+WHICH TESTING TOOL ARE YOU COMFORTABLE WITH AND WHAT ARE THE BENEFITS OF THAT TOOL?
+WHAT ARE THE TESTING TYPES SUPPORTED BY SELENIUM?
+
+SONARSCANNER?
+Sonar Scanner is used to collect information from the source code, for example if the project is java then it will pull that rules only and it will generate the reports
+like any bugs, code quality issues, security issues this report with the help of sonarqube it stores in a data base from this through a graphical interface we can see the things
+
+REAL TIME WORKING: at firts we nedd to create a project name it and generate tokens then choose maven and copy the command given this command we need to execute in our maven project

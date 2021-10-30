@@ -40,5 +40,5 @@ At any point of time if we want to get the data from the ansible playbook we wil
 the beauty of the debug module is to check what is happening in the code
 
 WHAT IS ANSIBLE GALAXY
-Ansible galaxy is a repository of ansible roles whiche are used in playbook to exicute in various hosts, those hostes are connected through ssh  protocol,
+Ansible galaxy is a repository of ansible roles which are used in playbook to exicute in various hosts, those hostes are connected through ssh  protocol,
 which can be managed by controller servers(home, search, community)

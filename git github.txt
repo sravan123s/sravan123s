@@ -1,19 +1,4 @@
-BRANCHING STRATEGIES?
-
-FEATURE BRANCHING....
-A feature branch model keeps all of the changes for a particular feature inside of a branch. 
-When the feature is fully tested and validated by automated tests, the branch is then merged 
-into master.
-TASK BRANCHING...
-In this model each task is implemented on its own branch with the task key included in the 
-branch name. It is easy to see which code implements which task, just look for the task key 
-in the branch name.
-RELEASE BRANCHING...
-Once the develop branch has acquired enough features for a release, you can clone that branch 
-to form a Release branch.  so no new features can be added after this point, only bug fixes, 
-documentation generation, and other release-oriented tasks should go in this branch.
-Once it is ready to ship, the release gets merged into master and tagged with a version number. 
-
+ 
 IN GIT HOW DO YOU REVERT A COMMIT THAT HAS ALREADY BEEN PUSHED AND MADE PUBLIC?
 Remove or fix the bad file in a new commit and push it to the remote repository.
 This is the most natural way to fix an error. Once you have made necessary changes to the file, 
@@ -22,29 +7,38 @@ Create a new commit that undoes all changes that were made in the bad commit.to 
 git revert <name of bad commit>
 
 GIT RESET AND GIT REVERT
- git reset HEAD allows you to go back to a previous commit and removes any other commits on its way back.It will not store the data
+ git reset HEAD allows you to go back to a previous commit and removes all in the staging area.It will not store the data
+ git reset HEAD <file name>
+ git reset --soft HEAD~N ==> it will give soft reset of last 20 commits this will leaves the changees in the file but removes the commits 
  git revert creates a new commit with the previous commit that you are reverting back to. 
  Instead of destroying everything back to that commit, you simply make a copy of that and move forward with that commit
+ 
  
 GIT STASH & GIT CONFIG
 The git stash command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy,
 which means if iam working in some feature if there is a change in requirement i will give priorihty for the new feature then the old one where iam working 
-will be saved in stash memory, i will use git pop for getting the data from stash storage for working 
-The git config command is a  function that is used to set Git configuration values on a global or local project level
+will be saved in stash memory, i will use git stash apply for getting the data from stash storage for working
+git stash -u
+git stash show==> to see the stashed things
+git stash apply==> it will apply the previous things back 
+The git config command is a  function that is used to set Git configuration values like user name and email on a global or local project level
+git congig --global user.name "sravan"
+git config --global user.email "reddysravansai143@gmail.com"
 
 HOW DO YOU SQUASH LAST N COMMITS INTO A SINGLE COMMIT?
-There are two options to squash last N commits into a single commit. 
+If,m we want to merge 2 or more commits into single commit we will use
+git rebase -i HEAD~N here N is no of commits
+start edditing the file that in place of pick keep squash 
 
-If you want to write the new commit message from scratch use a command
-git reset –soft HEAD~N && git commit
-If you want to start editing the new commit message with a concatenation of the existing commit 
-messages then you need to extract those messages and pass them to Git commit for that I will use
-git reset –soft HEAD~N && git commit –edit -m”$(git log –format=%B –reverse .HEAD@{N})”
+WHAT IS GIT FAST FORWARD?
 
 WHAT IS GIT BISECT? HOW CAN YOU USE IT TO DETERMINE THE SOURCE OF A (REGRESSION) BUG?
 Git bisect is used to find the commit that introduced a bug by using binary search. 
 Command for Git bisect is git bisect <subcommand> <options> 
 This command uses a binary search algorithm to find which commit in your project’s history introduced a bug.
+git bisect start
+gitbisect good <commit id>
+git bisect bad
 
 GIT MERGE
 Mearging takes the contents of a source branch and combine them with a target branch, only traget branch is uploaded in this process 
